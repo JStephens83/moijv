@@ -32,3 +32,6 @@ Cf doc de mise en route sur le site du prof : http://sharesources.fr/login
 c:\xampp\htdocs\PHP\moijv>php bin/console
     Mais avant : composer require orm
     Ensuite, on donne un nom pour la Class: USer
+
+//composer require orm-fixtures
+Crée des infos aléatoires dans la BDD
