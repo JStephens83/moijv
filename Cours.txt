@@ -1,1 +1,34 @@
-premiere etape: on crée un readme pour présenter l'appli
+//premiere etape: on crée un readme pour présenter l'appli
+
+//On installe netbeans et JDK (sur oracle)
+
+// On crée le repository (voir cours dans Git) sur github
+
+// Une fois netbeans installé, le lancer
+    // skin darcula
+    // tool>plugins>PHP
+
+//new project > application with existing sources
+    // choisir le dossier nécessaire (ici moijv)
+    // version php 7 / utf-8
+
+// dossier public = images/css/js
+// dossier config = plugins
+// vendor = tout ce qui a été codé par qqn d'autre, fourni avec l'install. On y touche pas.
+
+// dans la cmd : composer require profiler
+    // rajoute une barre ds netbeans
+// dans la cmd : composer require maker
+    // génération de code automatique
+
+// Dans netbeans > Controller > clicl droit : newPHPclass > HomeController.php
+
+// Dans la convention symfony, tous les namespaces sont dans un app
+    // namespace App\Controller;
+
+Cf doc de mise en route sur le site du prof : http://sharesources.fr/login
+
+//Création d'une nouvelle entité via la cmd:
+c:\xampp\htdocs\PHP\moijv>php bin/console
+    Mais avant : composer require orm
+    Ensuite, on donne un nom pour la Class: USer
