@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Détails de l'utilisateur {{user.firstname}} {{ user.lastName}} {% endblock %}
+
+
+{% block body %}
+    <h1>Détails de l'utilisateur {{user.firstname}} {{ user.lastName}}</h1>
+    <h2>Liste des produits</h2>
+    <ul>
+        {# user.products = fait appel à la méthode getProducts dans user.php pour récupérer les produits du user. #}
+        {% for product in user.products %}
+            <li> {{ product.name }} </li>
+        {% endfor %}
+    </ul>
+    {# Afficher les informations et produits du user #}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}{# Ce template s'inserera dans base.html.twig#}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue sur la liste des users, bande de moules à gauffres !</h1>
+
+    <!-- La Syntaxe ci-dessous est un commentaire TWIG -->
+    {#TODO Generate user list#}
+    {#En PHP on aurait fait un foreach:#}
+    {# <?php foreach($users as $user) : ?>#}
+
+    {#<?php endforeach : ?>#}
+
+    {#En twig:#}
+    <ul>
+        {% for user in users %}
+            <li>
+                {# <?= htmlspecialchars($user->getFirstname()); ?> #}
+                {{ user.firstname }} {{user.lastname}}
+            </li>    
+        {% endfor %}
+    </ul>
+{% endblock %}

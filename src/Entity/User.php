@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
+use \Doctrine\Common\Collections\Collection;
+use \Doctrine\ORM\Mapping as ORM;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -53,7 +57,34 @@ class User
      */
     private $birthdate;
     
-    // clic droit > insert code > getters & setters > clic la box User > et les 2 cases en bas (fluent et public)
+        //lien entre 2 tables
+    //@var User va permettre de faire ce lien
+    //@ORM OneToMany() = (N,1)
+    
+        /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
+     * @var Collection
+     */
+
+    private $products;
+    public function __construct() {
+        $this->products = new ArrayCollection();
+    }
+    
+    // Getters & Setters
+    
+    public function getProducts(): Collection {// Signifie qu'il retournera un tableau, products ci-dessous sera sous forme de collection
+        return $this->products;
+    }
+
+    public function setProducts(Collection $products) {
+        $this->products = $products;
+        return $this;
+    }
+
+        
+
+        // clic droit > insert code > getters & setters > clic la box User > et les 2 cases en bas (fluent et public)
     public function getId() {
         return $this->id;
     }

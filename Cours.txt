@@ -35,3 +35,22 @@ c:\xampp\htdocs\PHP\moijv>php bin/console
 
 //composer require orm-fixtures
 Crée des infos aléatoires dans la BDD
+
+//Dans la cmd: php bin/console make:controller UserController
+    Crée un controller automatiquement mais Symfony le crée dans le repertoire Controller mais pas admin comme on le voudrait dans notre cas. IL FAUT DONC CHANGER LE NAMESPACE
+
+// Injection de dépendances:
+    dans symfony on va rarement faire de "new", ces objets vont être instanciés automatiquement par symfony. Symfony va regarder ce qu'on a en parametre de notre action (méthode).
+    ex: cf. UserController.php dans projet moijv:
+    public function getList(App\Repository\UserRepository $userRepo)
+    {
+        return $this->render('admin/list_user.html.twig');
+    }
+
+// Mettre une colonne en index -> on peut faire des recherches dedans
+
+//        /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
+     * @var Collection
+     */
+     @var Collection = tableau orienté objet pour Doctrine
