@@ -18,6 +18,8 @@
             <li>
                 {# <?= htmlspecialchars($user->getFirstname()); ?> #}
                 {{ user.firstname }} {{user.lastname}}
+                <a href="{{ path('user_details', {id : user.id}) }}">Détails</a>
+                {# methode path pour rediriger (2 params: le nom de la route/le user id dynamique #}
             </li>    
         {% endfor %}
     </ul>
