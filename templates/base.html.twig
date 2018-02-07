@@ -6,6 +6,10 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <nav style="background-color: black; ">
+            <div style="display: inline;"><a style="font-weight: bold; font-size: 24px; color: limegreen; list-style-type: none; text-decoration: none;" href="{{ path('list_user') }}">Liste des users</a></div>
+            <div style="display: inline;"><a style="font-weight: bold; font-size: 24px; color: limegreen; list-style-type: none; text-decoration: none;" href="{{ path('list_product') }}">Liste des produits</a></div>
+        </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

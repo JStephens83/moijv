@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}{# Ce template s'inserera dans base.html.twig #}
+
+{% block title %}Liste des Produits associé au #{{ tag.name }}{% endblock %}
+
+{% block body %}
+    <h1>Liste des Produits associé au #{{ tag.name }}, bande de gredins !</h1>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }}
+                {% for tag in product.tags %}
+                    <a href="{{ path('list_product_by_tag', {name: tag.name}) }}">#{{ tag.name}}</a>
+                {% endfor %}  
+            </li>    
+        {% endfor %}
+        <a href="{{ path('list_product') }}">Revenir à la liste des produits</a>
+    </ul>
+{% endblock %}

@@ -2,62 +2,91 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\Index;
+use Doctrine\ORM\Mapping\Table;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  * @Table(indexes={@Index(name="state_index", columns={"state"})})
  */
-class Product
-{
+class Product {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
-    
-    
+
     /**
      * @ORM\column(type="string", length=100)
      * @var string 
      */
     private $name;
-    
+
     /**
      * @ORM\column(type="text")
      * @var string 
      */
     private $description;
-    
+
     /**
      * @ORM\column(type="string", length=255)
      * 
      */
     //Ici, on ne met pas de var car elle aura 2 types (file coté php / string coté Symfony)
     private $image;
-    
+
     /**
      * @ORM\column(type="string", length=255)
      * @var string 
      */
     private $state;
-    
+
     //lien entre 2 tables
     //@var User va permettre de faire ce lien
     //@ORM ManyToOne() = (1,N)
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="products")
      * @var User
      */
     private $user;
-    
-    
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="products")
+     * @var Collection
+     */
+    private $tags;
+
+    public function __construct() {
+        $this->tags = new ArrayCollection();
+    }
+
+        // Méthode pour les tags
+    public function addTag($tag) {
+        if ($this->getTags()->contains($tag)) {
+            return;
+        }
+
+        $this->getTags()->add($tag);
+        $tag->getProducts()->add($this);
+    }
+
     // Getters & Setters
-    
+
+    public function getTags(): Collection {
+        return $this->tags;
+    }
+
+    public function setTags(Collection $tags) {
+        $this->tags = $tags;
+        return $this;
+    }
+
     public function getUser(): User {
         return $this->user;
     }
@@ -67,8 +96,6 @@ class Product
         return $this;
     }
 
-        
-    
     public function getId() {
         return $this->id;
     }
@@ -88,8 +115,6 @@ class Product
     public function getState() {
         return $this->state;
     }
-
-   
 
     public function setId($id) {
         $this->id = $id;
@@ -115,6 +140,5 @@ class Product
         $this->state = $state;
         return $this;
     }
-
 
 }

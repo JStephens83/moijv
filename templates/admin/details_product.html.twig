@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Détails du produit {{products.name}} {% endblock %}
+
+
+{% block body %}
+    <h1>Détails du {{products.name}}</h1>
+    <h2>Liste des tags</h2>
+    <ul>
+        {# user.products = fait appel à la méthode getProducts dans user.php pour récupérer les produits du user. #}            
+                {% for tag in products.tags %}
+                   <li> #{{ tag.name}}</li> 
+                {% endfor %}      
+    </ul>
+    <a href="{{ path('list_product') }}">Retour à la liste des produits.</a>
+    {# Afficher les informations et produits du user #}
+{% endblock %} 

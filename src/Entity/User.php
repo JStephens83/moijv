@@ -65,8 +65,8 @@ class User
      * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
      * @var Collection
      */
-
     private $products;
+
     public function __construct() {
         $this->products = new ArrayCollection();
     }
