@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class ProductRepository extends ServiceEntityRepository {
@@ -22,13 +23,18 @@ class ProductRepository extends ServiceEntityRepository {
                         ->getResult();
     }
 
-    public function findByTagWithtags() {
+    public function findByTagWithtags($tag) {
         return $this->createQueryBuilder('p')
                         ->leftJoin('p.tags', 't')
+                        ->leftJoin(Product::class, 'p2', Join::WITH, 'p2.id = p.id')
+                        ->leftJoin('p2.tags', 't2')
                         ->addSelect('t')
-                        ->where('t.id = :id')
-                        ->setParameter(':id', $tag->getId());
+                        ->where('t2.id = :id')
+                        ->setParameter(':id', $tag->getId())
+                        ->getQuery()
+                        ->getResult();
     }
+    
 
     /*
       public function findBySomething($value)

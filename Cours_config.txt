@@ -54,3 +54,9 @@ Crée des infos aléatoires dans la BDD
      * @var Collection
      */
      @var Collection = tableau orienté objet pour Doctrine
+
+
+//Dans la cmd: composer require security
+
+//php -S localhost:8000
+    // permet de simuler un serveur partant de index.php et non de 'public'
