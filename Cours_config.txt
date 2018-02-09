@@ -59,4 +59,4 @@ Crée des infos aléatoires dans la BDD
 //Dans la cmd: composer require security
 
 //php -S localhost:8000
-    // permet de simuler un serveur partant de index.php et non de 'public'
+    // permet de simuler un serveur partant de index.php et non de 'public'(se placer dans public avant)

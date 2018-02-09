@@ -37,6 +37,7 @@ class LoanController extends Controller {
             //S'il est submité et valide, on enregistre le produit
             $manager->persist($product);
             $manager->flush();
+            return $this->redirectToRoute('my_products');//redirection vers page "mes produits" après flush
         }
 
         return $this->render('add_product.html.twig', [

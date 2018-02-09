@@ -8,7 +8,15 @@
     <body>
         <nav style="background-color: black; ">
             <div style="margin-right:20px; display: inline;"><a style="font-weight: bold; font-size: 24px; color: limegreen; list-style-type: none; text-decoration: none;" href="{{ path('list_user') }}">Liste des users</a></div>
+            
             <div style="display: inline;"><a style="font-weight: bold; font-size: 24px; color: limegreen; list-style-type: none; text-decoration: none;" href="{{ path('list_product') }}">Liste des produits</a></div>
+            
+            {% if is_granted('ROL_USER') %}
+            <div style="display: inline;"><a style="font-weight: bold; font-size: 24px; color: limegreen; list-style-type: none; text-decoration: none;" href="{{ path('my_products') }}">Mes produits</a></div>
+            
+            <div style="display: inline;"><a style="font-weight: bold; font-size: 24px; color: limegreen; list-style-type: none; text-decoration: none;" href="{{ path('add_product') }}">Ajouter un produit</a></div>
+            {% endif %}
+            
         </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
