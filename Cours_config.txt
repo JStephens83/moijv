@@ -49,7 +49,7 @@ Crée des infos aléatoires dans la BDD
 
 // Mettre une colonne en index -> on peut faire des recherches dedans
 
-//        /**
+//    /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
      * @var Collection
      */
@@ -60,3 +60,16 @@ Crée des infos aléatoires dans la BDD
 
 //php -S localhost:8000
     // permet de simuler un serveur partant de index.php et non de 'public'(se placer dans public avant)
+
+//UTILISATION TEMPLATE BOOTSTRAP
+//composer require asset -> permet d'utiliser la methode asset via twig pour acceder à nos assets
+
+//faire un validateur de données pour les gros mots:
+c:\xampp\htdocs\PHP\moijv>php bin/console make:validator BadWordValidator
+
+
+//Bundle pour permettre a symfony de comprendre toutes les annotations. 
+composer require symfony/expression-language
+
+//pour vérifier les bundle installés via composer : 
+    Aller voir dans vendor>composer.json
